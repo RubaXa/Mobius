@@ -1,20 +1,23 @@
-<div style="text-align:center">
-	<img src="st/logo.png"/>
-
-	<p>Experimental OOP/С++ framework for Arduino.</p>
-	<br/>
-</div>
-
-
-
-Features
-========
-
- * Event-driven architecture
- * Maximum abstraction
- * Demonstrativeness and ease of assembly
- * Visual effects
- * No delays!
+<table>
+<tr>
+	<td><img src="st/logo.png" height="450"/></td>
+	<td>
+		<h1>Features</h1>
+		<ul>
+			<li>Event-driven architecture</li>
+			<li>Maximum abstraction</li>
+			<li>Demonstrativeness and ease of assembly</li>
+			<li>Visual effects</li>
+			<li>No delays!</li>
+		</ul>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	</td>
+</tr>
+</table>
 
 
 
@@ -31,7 +34,6 @@ Led::Array *indicator = Led::Array::range(2, 9);
 
 Power *power = new Power(500); // duration, ms
 Button *btn = new Button(11);
-
 
 void setup() {
 	led->setEffect(new Effects::Blink(500));
@@ -60,8 +62,7 @@ void loop() {
 ```
 
 
-Сomponents
-==========
+### Сomponents
 
  * Led
  * Led::Bar
