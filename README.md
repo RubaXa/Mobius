@@ -20,6 +20,8 @@
 </table>
 
 
+---
+
 
 A very simple example
 =====================
@@ -60,6 +62,36 @@ void loop() {
 	Mobius::strip();
 }
 ```
+
+
+---
+
+
+### Using motor
+
+```c++
+#include <Mobius.h>
+
+use namespace Mobius;
+
+Button *btn = new Button(2);
+Motor *motor = new Motor(3, 4);
+Power *acceleration = new Power(1000);
+
+void setup() {
+	motor->setDirection(Motor::CW);
+	acceleration->attach(motor);
+	btn->attach(acceleration);
+}
+
+void loop() {
+	Mobius::strip();
+}
+```
+
+
+---
+
 
 
 ### Сomponents
