@@ -11,6 +11,8 @@
 #include "Pin.h"
 #include "LED.h"
 #include "Button.h"
+#include "Motor.h"
+#include "Sensor.h"
 
 
 namespace Mobius {
@@ -53,42 +55,6 @@ namespace Mobius {
     };
     
 }
-
-
-/*
-class Mobius {
-
-    class Sensor: public Pin {
-    protected:
-        long lastRead = 0;
-        
-        
-    public:
-        int DELAY = 50;
-        static const int VALUE = 30;
-        
-        Sensor(int pin) : Pin(pin, INPUT) {
-            Mobius::getInstance()->add(this);
-        }
-        
-        virtual void tick() {
-            long now = millis();
-            
-            // Если времени с последенего момента имезения больше `DELAY`, проверяем реальность изменения
-            if ((now - this->lastRead) > Sensor::DELAY) {
-                this->lastRead = now;
-                this->__value = this->read(true);
-                
-                if (this->value != this->__value) {
-                    this->value = this->__value;
-                    this->trigger(VALUE);
-                }
-            }
-        }
-    };
-
-};
-*/
 
 
 #endif

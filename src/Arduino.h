@@ -5,8 +5,17 @@
 #ifndef Mobius_Arduino_h
 #define Mobius_Arduino_h
 
+
 typedef unsigned short int byte;
 
+
+void delayMicroseconds(int ms) {
+    
+}
+
+float pulseIn(int pin, byte value) {
+    return 0;
+}
 
 int constrain(float val, float min, float max) {
     return 0;

@@ -23,13 +23,16 @@
 ---
 
 
+<a name="example"></a>
 A very simple example
 =====================
+
+See http://youtu.be/Y4l9nhQlWT0
 
 ```c++
 #include <Mobius.h>
 
-use namespace Mobius;
+using namespace Mobius;
 
 LED *led = new LED(10);
 LED::Array *indicator = LED::Array::range(2, 9);
@@ -72,7 +75,7 @@ void loop() {
 ```c++
 #include <Mobius.h>
 
-use namespace Mobius;
+using namespace Mobius;
 
 Button *btn = new Button(2);
 Motor *motor = new Motor(3, 4);
@@ -100,6 +103,7 @@ void loop() {
  * [Button](#Button)
  * [Power](#Power)
  * [Motor](#Motor)
+ * [Sensor::Ultrasonic](#SensorUltrasonic)
 
 
 ---
@@ -199,6 +203,24 @@ motor->setSpeed(0); // stop
 motor->setDirection(Motor::CW); // OR `Motor::CCW`
 ```
 
+
+---
+
+
+<a name="SensorUltrasonic"></a>
+#### Sensor::Ultrasonic
+
+```c++
+Sensor::Ultrasonic *sonar = new Sensor::Ultrasonic(2, 3);
+
+// Subscribe to the change in distance
+sonar->bind(Sensor::Ultrasonic::DISTANCE, &handleEvent);
+
+// Current distance
+sonar->value; // mm
+```
+
+
 ---
 
 
@@ -215,7 +237,7 @@ motor->setDirection(Motor::CW); // OR `Motor::CCW`
 ```c++
 #include <Mobius.h>
 
-use namespace Mobius;
+using namespace Mobius;
 
 // Variables
 
