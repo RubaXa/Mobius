@@ -95,12 +95,109 @@ void loop() {
 
 ### Сomponents
 
- * LED
- * LED::Bar
- * Button
- * Power
- * Motor
+ * [LED](#LED)
+ * [LED::Array](#LED::Array)
+ * [Button](#Button)
+ * [Power](#Power)
+ * [Motor](#Motor)
 
+
+---
+
+
+<a name="LED"></a>
+#### LED
+
+	* `on()` — turn on (1)
+	* `off()` — turn off (0)
+	* `setValue(float value)` — set brightness `0..1`
+	* `getValue():float` —  get brightness `0..1`
+	* `setEffect(Effects::Effect *effect)`
+
+```c++
+byte pin = 13;
+LED *led = new Led(pin);
+
+// Add fade effect
+led->setEffect(new Effects::Fade(500, 300)); // 500ms — fadeIn, 300ms - fadeOut
+
+// Or blinking effect
+led->setEffect(new Effects::Blink(150)); // 150ms — interval between blinks
+
+// Turn on
+led->on();
+```
+
+
+---
+
+
+<a name="LED::Array"></a>
+#### LED::Array
+
+```c++
+byte startPin = 2;
+byte endPin = 12;
+LED::Array *bar = LED::Array::range(startPin, endPin);
+
+// Turn on
+bar->on();
+
+// Enable only half
+bar->setValue(0.5);
+```
+
+
+---
+
+
+<a name="Button"></a>
+#### Button
+
+	* `pressed:bool` — `true` или `false`
+	* `attach(Pin *pin)`
+	* `bind(int eventId, void *callback(int))` — add event listener: `Button::DOWN` or `Button::UP`
+
+```c++
+byte pin = 10;
+Button *btn = new Button(pin);
+
+// Turn on LED by pressing the button
+btn->attach(new LED(13));
+
+// Add event listener
+btn->bind(Button::DOWN, &handleEvent);
+```
+
+---
+
+
+<a name="Power"></a>
+#### Power
+
+```c++
+Power *power = new Power(3000); // 3000ms — 0 to 1
+Button *btn = new Button(13);
+
+power->attach(LED::Array::range(1, 10));
+btn->attach(power);
+```
+
+
+---
+
+
+<a name="Motor"></a>
+#### Motor
+
+```c++
+Motor *motor = new Motor(2, 3);
+
+motor->setSpeed(1); // max
+motor->setSpeed(0); // stop
+
+motor->setDirection(Motor::CW); // OR `Motor::CCW`
+```
 
 ---
 
