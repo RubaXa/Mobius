@@ -96,7 +96,7 @@ void loop() {
 ### Сomponents
 
  * [LED](#LED)
- * [LED::Array](#LED::Array)
+ * [LED::Array](#LEDArray)
  * [Button](#Button)
  * [Power](#Power)
  * [Motor](#Motor)
@@ -132,7 +132,7 @@ led->on();
 ---
 
 
-<a name="LED::Array"></a>
+<a name="LEDArray"></a>
 #### LED::Array
 
 ```c++
