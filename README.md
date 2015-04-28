@@ -112,7 +112,24 @@ void loop() {
  4. `cd Mobius`
  5. `make all` (Create a `Mobius.zip`)
  6. IDE: [Sketch] > [Include Library] -> [Add .ZIP Library]
+ 7. Enjoy!
 
+
+```c++
+#include <Mobius.h>
+
+use namespace Mobius;
+
+// Variables
+
+void setup() {
+	// Logic
+}
+
+void loop() {
+	Mobius::strip();
+}
+```
 
 
 ---
