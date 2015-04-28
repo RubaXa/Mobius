@@ -108,11 +108,11 @@ void loop() {
 <a name="LED"></a>
 #### LED
 
-	* `on()` — turn on (1)
-	* `off()` — turn off (0)
-	* `setValue(float value)` — set brightness `0..1`
-	* `getValue():float` —  get brightness `0..1`
-	* `setEffect(Effects::Effect *effect)`
+ * `on()` — turn on (1)
+ * `off()` — turn off (0)
+ * `setValue(float value)` — set brightness `0..1`
+ * `getValue()` —  get brightness `0..1`
+ * `setEffect(Effects::Effect *effect)`
 
 ```c++
 byte pin = 13;
@@ -154,9 +154,9 @@ bar->setValue(0.5);
 <a name="Button"></a>
 #### Button
 
-	* `pressed:bool` — `true` или `false`
-	* `attach(Pin *pin)`
-	* `bind(int eventId, void *callback(int))` — add event listener: `Button::DOWN` or `Button::UP`
+ * `pressed:bool` — state `true` или `false`
+ * `attach(Pin *pin)`
+ * `bind(int eventId, void *callback(int))` — add event listener: `Button::DOWN` or `Button::UP`
 
 ```c++
 byte pin = 10;
