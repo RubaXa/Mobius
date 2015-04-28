@@ -3,8 +3,8 @@
 //
 
 
-#ifndef __Mobius__List__
-#define __Mobius__List__
+#ifndef Mobius_List_h
+#define Mobius_List_h
 
 
 template <typename T> class List {
@@ -31,7 +31,6 @@ template <typename T> class List {
     T * get(int index) const {
         return this->items[index];
     }
-    
 
     
     // Добавить элемент
@@ -82,4 +81,4 @@ template <typename T> class List {
 
 
 
-#endif /* defined(__Mobius__List__) */
+#endif

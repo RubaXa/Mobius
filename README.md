@@ -1,6 +1,6 @@
 <table>
 <tr>
-	<td><img src="st/logo.png" height="450"/></td>
+	<td><img src="st/logo.png" width="360" alt="Möbius"/></td>
 	<td>
 		<h1>Features</h1>
 		<ul>
@@ -31,8 +31,8 @@ A very simple example
 
 use namespace Mobius;
 
-Led *led = new Led(10);
-Led::Array *indicator = Led::Array::range(2, 9);
+LED *led = new LED(10);
+LED::Array *indicator = LED::Array::range(2, 9);
 
 Power *power = new Power(500); // duration, ms
 Button *btn = new Button(11);
@@ -93,11 +93,29 @@ void loop() {
 ---
 
 
-
 ### Сomponents
 
- * Led
- * Led::Bar
+ * LED
+ * LED::Bar
  * Button
  * Power
  * Motor
+
+
+---
+
+
+### Installation
+ 1. [Download the Arduino Software](http://www.arduino.cc/en/Main/Software)
+ 2. Run IDE
+ 3. Clone this repository: `git@github.com:RubaXa/Mobius.git`
+ 4. `cd Mobius`
+ 5. `make all` (Create a `Mobius.zip`)
+ 6. IDE: [Sketch] > [Include Library] -> [Add .ZIP Library]
+
+
+
+---
+
+
+### MIT LICENSE

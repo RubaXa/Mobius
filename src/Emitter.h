@@ -26,15 +26,6 @@ namespace Mobius {
 
 
 	public:
-		static const int TEST_EVENT = 0;
-
-
-		static int nextId() {
-			static int gid = 0;
-			return ++gid;
-		}
-
-
 		// Подписаться на событие
 		void bind(int id, callback handler) {
 			Listener *listener = new Listener();

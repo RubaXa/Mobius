@@ -1,21 +1,21 @@
 //
-//  Led.h
+//  LED.h
 //
 
-#ifndef Mobius_Led_h
-#define Mobius_Led_h
+#ifndef Mobius_LED_h
+#define Mobius_LED_h
 
 #include "Pin.h"
 
 
 namespace Mobius {
 
-	class Led: public Pin {
+	class LED: public Pin {
 	public:
 		static const byte ON = 10;
 		static const byte OFF = 11;
 
-		Led(int pin) : Pin (pin, OUTPUT) {
+		LED(int pin) : Pin (pin, OUTPUT) {
 		}
 
 
