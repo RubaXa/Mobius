@@ -13,7 +13,16 @@ void delayMicroseconds(int ms) {
     
 }
 
-float pulseIn(int pin, byte value) {
+void attachInterrupt(int pin, void fn(), int mode) {
+    
+}
+
+void detachInterrupt(int pin) {
+    
+}
+
+
+float pulseIn(int pin, byte value, int timeout = 0) {
     return 0;
 }
 
@@ -66,16 +75,26 @@ void pinMode(int pin, int mod) {
     
 }
 
-int millis() {
+long millis() {
     static int time = 0;
     time = time + 100;
     return time;
 }
 
+long micros() {
+    static long time = 0;
+    time = time + 1000;
+    return time;
+}
+
+
 const int LOW = 0;
 const int HIGH = 1;
 const int INPUT = 0;
 const int OUTPUT = 1;
+
+const int RISING = 3;
+const int FALLING = 4;
 
 
 #endif
