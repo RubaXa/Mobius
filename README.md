@@ -46,7 +46,7 @@ void setup() {
 	power->attach(indicator);
 	btn->attach(power);
 
-	power->bind(Power::PRGORESS, &handleEvent);
+	power->bind(Power::PROGRESS, &handleEvent);
 }
 
 void handleEvent(int id) {
