@@ -9,78 +9,91 @@
 
 namespace Mobius {
 
-	namespace Sensor {
+    namespace Sensor {
 
-		class Sensor: public Pin {
-		protected:
-			long lastRead = 0;
-
-
-		public:
-			int DELAY = 50;
-			static const int VALUE = 40;
-
-			Sensor(int pin) : Pin(pin, INPUT) {
-			}
-
-			virtual void tick(long now) {
-				// Если времени с последенего момента имезения больше `DELAY`, проверяем реальность изменения
-				if ((now - this->lastRead) > Sensor::DELAY) {
-					this->lastRead = now;
-					this->__value = this->read(true);
-
-					if (this->value != this->__value) {
-						this->value = this->__value;
-						this->trigger(VALUE);
-					}
-				}
-			}
-		};
+        class Sensor: public Pin {
+        protected:
+            long lastRead = 0;
 
 
-		//
-		// Ultrasonic
-		//
-		class Ultrasonic: public Sensor {
-		public:
-			int DELAY = 50;
-			static const int DISTANCE = 100;
+        public:
+            int DELAY = 50;
+            static const int VALUE = 40;
 
-			byte trigPin;
-			byte echoPin;
+            Sensor(int pin) : Pin(pin, INPUT) {
+            }
+
+            virtual void tick(long now) {
+                // Если времени с последенего момента имезения больше `DELAY`, проверяем реальность изменения
+                if ((now - this->lastRead) > Sensor::DELAY) {
+                    this->lastRead = now;
+                    this->__value = this->read(true);
+
+                    if (this->value != this->__value) {
+                        this->value = this->__value;
+                        this->trigger(VALUE);
+                    }
+                }
+            }
+        };
+
+
+        //
+        // Ultrasonic
+        //
+        class Ultrasonic: public Sensor {
+        protected:
+            int timeout;
 
             
-			Ultrasonic(byte trigPin, byte echoPin) : Sensor(0) {
-				this->trigPin = trigPin;
-				this->echoPin = echoPin;
+        public:
+            int DELAY = 150;
+            static const int DISTANCE = 100;
 
-				pinMode(trigPin, OUTPUT);
-				pinMode(echoPin, INPUT);
-			}
+            int max;
 
-            
-			virtual void tick(long now) {
-				if ((now - this->lastRead) > Ultrasonic::DELAY) { // debounce
-					this->lastRead = now;
+            byte trigPin;
+            byte echoPin;
+
+            Ultrasonic(byte trigPin, byte echoPin, int max = 400, int timeout = 0) : Sensor(0) {
+                this->trigPin = trigPin;
+                this->echoPin = echoPin;
+
+                this->max = max;
+                this->value = max;
+                this->timeout = timeout || max * 58;
+
+                pinMode(trigPin, OUTPUT);
+                pinMode(echoPin, INPUT);
+            }
+
+
+            virtual void tick(long now) {
+                if ((now - this->lastRead) > Ultrasonic::DELAY) { // debounce
+                    this->lastRead = now;
+
+                    digitalWrite(this->trigPin, LOW);
+
+                    delayMicroseconds(2);
+                    digitalWrite(this->trigPin, HIGH);
+
+                    delayMicroseconds(10);
+                    digitalWrite(this->trigPin, LOW);
                     
-					digitalWrite(this->trigPin, LOW);
+                    this->value = pulseIn(this->echoPin, HIGH, this->timeout) / 58; // cm
+                    
+                    if (this->value == 0) {
+                        this->value = this->max;
+                    }
 
-					delayMicroseconds(2);
-					digitalWrite(this->trigPin, HIGH);
-
-					delayMicroseconds(10);
-					digitalWrite(this->trigPin, LOW);
-
-					this->value = pulseIn(this->echoPin, HIGH) / 5.8; // mm
-
-					if (this->__value != this->value) {
-						this->__value = this->value;
-						this->trigger(DISTANCE);
-					}
-				}
-			}
-		};
-	}
+                    if (this->__value != this->value) {
+                        this->__value = this->value;
+                        this->trigger(DISTANCE);
+                    }
+                }
+            }
+        };
+    }
 
 }
 

@@ -209,6 +209,7 @@ motor->setDirection(Motor::CW); // OR `Motor::CCW`
 
 <a name="SensorUltrasonic"></a>
 #### Sensor::Ultrasonic
+Support HC-SR04.
 
 ```c++
 Sensor::Ultrasonic *sonar = new Sensor::Ultrasonic(2, 3);
@@ -217,7 +218,7 @@ Sensor::Ultrasonic *sonar = new Sensor::Ultrasonic(2, 3);
 sonar->bind(Sensor::Ultrasonic::DISTANCE, &handleEvent);
 
 // Current distance
-sonar->value; // mm
+sonar->value; // cm
 ```
 
 
