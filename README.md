@@ -24,7 +24,7 @@
 
 
 <a name="example"></a>
-A very simple example ([SEE ALL] (https://github.com/RubaXa/Mobius/wiki/_Examples_))
+A very simple example ([SEE ALL] (https://github.com/RubaXa/Mobius/wiki/))
 =====================
 
 See http://youtu.be/Y4l9nhQlWT0
