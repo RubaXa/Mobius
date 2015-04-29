@@ -46,7 +46,7 @@ void setup() {
 	power->attach(indicator);
 	btn->attach(power);
 
-	power->bind(Power::PRGORESS, &handleEvent);
+	power->bind(Power::PROGRESS, &handleEvent);
 }
 
 void handleEvent(int id) {
@@ -158,7 +158,7 @@ bar->setValue(0.5);
 <a name="Button"></a>
 #### Button
 
- * `pressed:bool` — state `true` или `false`
+ * `pressed:bool` — state `true` or `false`
  * `attach(Pin *pin)`
  * `bind(int eventId, void *callback(int))` — add event listener: `Button::DOWN` or `Button::UP`
 
