@@ -10,6 +10,7 @@ all:
 		src/Button.h \
 		src/Motor.h \
 		src/Sensor.h \
+		src/Transmission.h \
 		src/Mobius.h \
 		>> Mobius/Mobius.tmp.h
 

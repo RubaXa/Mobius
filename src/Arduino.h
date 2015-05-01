@@ -9,6 +9,18 @@
 typedef unsigned short int byte;
 
 
+class HardwareSerial {
+public:
+    bool available() {
+        return false;
+    }
+    
+    int read() {
+        return 0;
+    }
+};
+
+
 void delayMicroseconds(int ms) {
     
 }

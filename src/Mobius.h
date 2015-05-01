@@ -13,6 +13,7 @@
 #include "Button.h"
 #include "Motor.h"
 #include "Sensor.h"
+#include "Transmission.h"
 
 
 namespace Mobius {
@@ -27,6 +28,9 @@ namespace Mobius {
     }
     
     
+    //
+    // Power(duration)
+    //
     class Power: public PinNode {
     public:
         static const int PROGRESS = 30;
@@ -53,6 +57,11 @@ namespace Mobius {
             }
         }
     };
+    
+    
+    //
+    // Keyboard
+    //
     
 }
 

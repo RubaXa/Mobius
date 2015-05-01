@@ -21,15 +21,15 @@ namespace Mobius {
 		protected:
 			long startTime = 0;
 
-			float valueFrom = 0;
-			float valueTo = 0;
-
 			int duration = 0;
 			int durationOn = 0;
 			int durationOff = 0;
 
 		public:
 			float value = 0;
+			float valueFrom = 0;
+			float valueTo = 0;
+            
 			bool active = false;
 			bool enabled = false;
 
@@ -67,12 +67,14 @@ namespace Mobius {
 
 
 			void set(float value) {
-				this->active = true;
-				this->startTime = millis();
-				this->duration = (this->value > value) ? this->durationOff : this->durationOn;
+                if (this->valueTo != value) {
+                    this->active = true;
+                    this->startTime = millis();
+                    this->duration = (this->value > value) ? this->durationOff : this->durationOn;
 
-				this->valueFrom = this->value;
-				this->valueTo = value;
+                    this->valueFrom = this->value;
+                    this->valueTo = value;
+                }
 			}
 
 
@@ -85,6 +87,7 @@ namespace Mobius {
 				} else {
 					this->value = this->valueFrom + (this->valueTo - this->valueFrom) * progress;
 				}
+                    
 			}
 		};
 
