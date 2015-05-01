@@ -193,6 +193,7 @@ btn->attach(power);
 
 <a name="Motor"></a>
 #### Motor
+Support L298N.
 
 ```c++
 Motor *motor = new Motor(2, 3);
