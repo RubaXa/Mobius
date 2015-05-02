@@ -26,7 +26,7 @@ namespace Mobius {
         static const int RIGHTWARD = 1;
 
         Transmission() : Item() {
-            this->power = new Effects::Fade(500, 100);
+            this->power = new Effects::Fade(100, 50);
             this->rotate = new Effects::Fade(100);
         }
         
@@ -106,8 +106,8 @@ namespace Mobius {
             this->leftMotor->setDirection(dir);
             this->rightMotor->setDirection(dir);
             
-            this->leftMotor->setSpeed(abs(speedLeft * (this->rotate->value < 0 ? rotateSpeed : 1)));
-            this->rightMotor->setSpeed(abs(speedRight * (this->rotate->value > 0 ? rotateSpeed : 1)));
+            this->leftMotor->setSpeed(abs(speedLeft * (rotateSpeed < 0 ? 1 - abs(rotateSpeed*0.8) : 1)));
+            this->rightMotor->setSpeed(abs(speedRight * (rotateSpeed > 0 ? 1 - abs(rotateSpeed*0.8) : 1)));
         }
     };
     
